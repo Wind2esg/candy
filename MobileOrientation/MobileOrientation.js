@@ -19,8 +19,8 @@ function mask(){
     maskDiv.style.width = "100%";
     maskDiv.style.height = "100%";
     maskDiv.style.zIndex = "1000";
-    maskDiv.style.backgroundColor = "black%";
-    maskDiv.style.textAlign = "center%";
+    maskDiv.style.backgroundColor = "black";
+    maskDiv.style.textAlign = "center";
     maskDiv.style.paddingTop = "25%";
 
     const maskTitle = document.getElementById('maskTitle');
