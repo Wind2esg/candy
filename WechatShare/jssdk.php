@@ -1,3 +1,6 @@
+<!-- pull access token and exchange api ticket -->
+<!-- cache them in files -->
+
 <?php
 class JSSDK {
   private $appId;

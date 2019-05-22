@@ -1,14 +1,18 @@
+<!-- mp.wexin.qq.com/wiki -->
+
 <?php
 require_once "jssdk.php";
-$jssdk = new JSSDK("wxcabf8740173ea5ed", "bb25850afaa766521e1d9b1bd51affdc");
+$jssdk = new JSSDK("appId", "appSecret");
 $signPackage = $jssdk->GetSignPackage();
 ?>
 
+<!-- import js sdk  -->
 
 <!-- <script src="http://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script> -->
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 
 <script>
+//set wx.config
 wx.config({
     debug: false,
     appId: '<?php echo $signPackage["appId"];?>',
@@ -24,6 +28,7 @@ wx.config({
       ]
 });
 
+//put share function in ready
 wx.ready(function () {
     wx.onMenuShareTimeline({
         title: "",

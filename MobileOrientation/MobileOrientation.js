@@ -1,7 +1,7 @@
 /**
  * pc or mobile, portrait or landscape
  * if pc or landscape, then add mask.
- * 
+ * zero depandence.
  */
 
 

@@ -1,6 +1,7 @@
 /**
  * Loading mask. 
  * PLZ add css code.
+ * zero depandence.
  */
 
 const _LoadingHtmlStart = '<div id="loadingDiv">';
