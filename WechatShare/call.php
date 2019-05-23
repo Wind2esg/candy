@@ -1,3 +1,4 @@
+<!-- @wind2esg -->
 <!-- mp.wexin.qq.com/wiki -->
 
 <?php
@@ -21,6 +22,7 @@ wx.config({
     signature: '<?php echo $signPackage["signature"];?>',
     jsApiList: [
         // 所有要调用的 API 都要加到这个列表中
+        // official recommand but they didnt work. WEIRD!
         // 'updateAppMessageShareData', for v1.4
         // 'updateTimelineShareData', for v1.4
         'onMenuShareTimeline',  //for v1.0
@@ -31,10 +33,10 @@ wx.config({
 //put share function in ready
 wx.ready(function () {
     wx.onMenuShareTimeline({
-        title: "",
+        title: "title",
         link: window.location.href,
         //absolute path
-        imgUrl: "",
+        imgUrl: "http://www.xxx.com/a.jpg",
         success: function () {
         },
         cancel: function () {
@@ -42,11 +44,11 @@ wx.ready(function () {
     });
 
     wx.onMenuShareAppMessage({
-        title: "",
-        desc: "",
+        title: "title",
+        desc: "description",
         link: window.location.href,
         //absolute path
-        imgUrl: "",
+        imgUrl: "http://www.xxx.com/a.jpg",
         success: function () {
         },
         cancel: function () {

@@ -1,7 +1,9 @@
-/**
+/**@wind2esg
  * Loading mask. 
  * PLZ add css code.
  * zero depandence.
+ * ATTENTION. DO NOT put this in <script type="module"> label. it will block page rendering, that means, the page
+ *  will stay at interactive state.
  */
 
 const _LoadingHtmlStart = '<div id="loadingDiv">';

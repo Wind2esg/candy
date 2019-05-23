@@ -5,3 +5,21 @@
 
 -  imgcache 引用地址 : http://imgcache.gtimg.cn/music/h5/lib/js/module/iSlider-1.0.min.js?_bid=363&max_age=2592000
 -  github: https://github.com/kele527/iSlider
+
+
+key points: //@wind2esg
+
+-  how to get the current index
+        const myiSlider = new iSlider();
+        myiSlider.index;
+
+-  events and index change order
+        movestart -> onslide -> index change -> moveend
+
+-  lazyload, onslide
+
+-  autoplay problems in wechat
+        - android
+                addlistener for touch events in onslide
+        - ios
+                addlistener for WeixinJSBridgeReady events in onslide
