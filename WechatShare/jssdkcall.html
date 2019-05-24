@@ -1,0 +1,20 @@
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/json3/3.3.2/json3.min.js"></script>
+
+<script>
+
+var x;
+$.ajax({
+    url: "http://hh.manzhiyan.com/services/jssdk.php",
+    dataType: "json",
+    type: "POST",
+    async: false,
+    success: function(data){
+        x = data;
+        alert(data["appId"]);
+        
+    }
+});
+alert(x["appId"]);
+
+</script>
