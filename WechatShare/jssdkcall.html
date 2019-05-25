@@ -1,20 +1,69 @@
 <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/json3/3.3.2/json3.min.js"></script>
+<!-- <script src="http://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script> -->
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 
 <script>
 
-var x;
+//retrieve wxconfig data from center controll service.
+var wxconfig;
 $.ajax({
-    url: "http://hh.manzhiyan.com/services/jssdk.php",
-    dataType: "json",
+    url: "your jssdkservices.php url",
     type: "POST",
+    data: {
+            "token" : "your token",
+            "url" : window.location.href
+        },
+    dataType: "json",
+    //async false is important, otherwise wxconfig wouldnt get data
+    //We cant ensure ajax finished before wx.config() when async is true. 
     async: false,
     success: function(data){
-        x = data;
-        alert(data["appId"]);
-        
+        wxconfig = data;
     }
 });
-alert(x["appId"]);
+
+//set wx.config
+wx.config({
+    debug: false,
+    appId: wxconfig["appId"],
+    timestamp: wxconfig["timestamp"],
+    nonceStr: wxconfig["nonceStr"],
+    signature: wxconfig["signature"],
+    jsApiList: [
+        // 所有要调用的 API 都要加到这个列表中
+        // official recommand but they didnt work. 
+        // 'updateAppMessageShareData', //for v1.4
+        // 'updateTimelineShareData', //for v1.4
+        'onMenuShareTimeline',  //for v1.0
+        'onMenuShareAppMessage'     //for v1.0
+      ]
+});
+
+//have to put these functions in ready
+wx.ready(function () {
+    wx.onMenuShareTimeline({
+        title: "title",
+        link: window.location.href,
+        //absolute path
+        imgUrl: "http://www.xxx.com/a.jpg",
+        success: function () {
+        },
+        cancel: function () {
+        }
+    });
+
+    wx.onMenuShareAppMessage({
+        title: "title",
+        desc: "description",
+        link: window.location.href,
+        //absolute path
+        imgUrl: "http://www.xxx.com/a.jpg",
+        success: function () {
+        },
+        cancel: function () {
+        }
+    });
+});
 
 </script>

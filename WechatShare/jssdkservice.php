@@ -8,12 +8,17 @@ class JSSDK {
     $this->appSecret = $appSecret;
   }
 
-  public function getSignPackage() {
+  //for local it is getSignPackage()
+  public function getSignPackage($request_url) {
     $jsapiTicket = $this->getJsApiTicket();
 
+    // for local
     // 注意 URL 一定要动态获取，不能 hardcode.
-    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
-    $url = "$protocol$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    // $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+    // $url = "$protocol$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    
+    //for web center control service
+    $url = $request_url;
 
     $timestamp = time();
     $nonceStr = $this->createNonceStr();
@@ -104,8 +109,17 @@ class JSSDK {
   }
 }
 
-$jssdk = new JSSDK("wxcabf8740173ea5ed", "bb25850afaa766521e1d9b1bd51affdc");
-$signPackage = $jssdk->GetSignPackage();
-$json = json_encode($signPackage);
-echo $json;
+//check if the requester allowed to access the service.
+$access_allowed = json_decode(file_get_contents("access_allowed.json"),true);
+//if $access_allowed[$_POST["token"]] existed, means it was in the access_allowed.json.
+//we put token as key
+if($access_allowed[$_POST["token"]]){
+  $jssdk = new JSSDK("wxcabf8740173ea5ed", "bb25850afaa766521e1d9b1bd51affdc");
+  $signPackage = $jssdk->GetSignPackage($_POST["url"]);
+  $json = json_encode($signPackage);
+  echo $json;
+}else{
+  echo "you have no access";
+}
+
 ?>

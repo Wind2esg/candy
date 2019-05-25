@@ -1,0 +1,13 @@
+#maskDiv{
+    visibility:hidden;
+    width:100%;
+    height:100%;
+    z-index: 1000;
+    background:black;
+    text-align: center;
+    padding-top:25%;
+}
+#maskTitle, #maskDesc{
+    font-size: xx-large;
+    color:white;
+}

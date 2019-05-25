@@ -1,0 +1,6 @@
+-  autoplay problems in wechat
+    - android
+        addlistener for touch events in onslide
+
+    - ios
+        addlistener for WeixinJSBridgeReady events in onslide
