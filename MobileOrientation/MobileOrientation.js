@@ -8,7 +8,7 @@
 function mask(){
     const _LoadingHtmlStart = '<div id="maskDiv">';
     const _LoadingHtmlTitle = '<p id="maskTitle">COMPANY</p>';
-    const _LoadingHtmlDesc = '<p id="maskDesc">请您使用移动设备竖屏模式体验本H5</p>';
+    const _LoadingHtmlDesc = '<p id="maskDesc">请您使用移动设备竖屏模式体验本H5<br>竖屏->点击右上角->刷新</p>';
     const _LoadingHtmlEnd = '</div>';
                 
     document.write(_LoadingHtmlStart+_LoadingHtmlTitle+_LoadingHtmlDesc+_LoadingHtmlEnd);
